@@ -21,9 +21,10 @@ export class CheckInComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.data.roomKey 
+    // this.data.roomKey
     this.key =
-      '-LACLIdDspNmBgQMRMXH';
+      // '-LACLIdDspNmBgQMRMXH';
+      '-L6_vPTHL5VX7yOjhGPJ';
   }
 
   render(e) {
