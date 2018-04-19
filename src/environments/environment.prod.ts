@@ -6,7 +6,7 @@ export const environment = {
   confRoomDefaultLocation: 'assets/images/hotels/',
   firebaseConfig: {
     apiKey: '-',
-    authDomain: '-,
+    authDomain: '-',
     databaseURL: '-',
     projectId: '-',
     storageBucket: '-',
