@@ -7,13 +7,13 @@ export const environment = {
   production: false,
   roomDefaultLocation: 'assets/images/hotel/',
   confRoomDefaultLocation: 'assets/images/hotels/',
-    firebaseConfig: {
-    apiKey: '-',
-    authDomain: '-,
-    databaseURL: '-',
-    projectId: '-',
-    storageBucket: '-',
-    messagingSenderId: '-'
+  firebaseConfig: {
+    apiKey: 'AIzaSyB-fYlDGvFYdsJb0Li81AW1Ga1gi2Vfksc',
+    authDomain: 'test-12375.firebaseapp.com',
+    databaseURL: 'https://test-12375.firebaseio.com',
+    projectId: 'test-12375',
+    storageBucket: 'test-12375.appspot.com',
+    messagingSenderId: '926446553362'
   },
   appBillingListTableColumns: [
     'id',
