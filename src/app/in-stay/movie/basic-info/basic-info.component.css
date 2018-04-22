@@ -1,0 +1,30 @@
+/* .cast-info .mat-card {
+    padding: 10px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 100px
+} */
+
+.holder {
+    display: inline-flex;
+}
+
+.holder mat-card {
+    margin: 10px;
+    max-width: 140px;
+    max-height: 200px;
+}
+
+.holder img {
+    /* max-width: 150px; */
+    height: 120px;
+    background-size: cover;
+}
+
+.holder mat-card-content {
+    display: flex;
+    justify-content: center;
+    
+}

@@ -13,6 +13,8 @@ import { OutletComponent } from './outlet/outlet.component';
 import { MovieComponent } from './movie/movie.component';
 import { FoodComponent } from './food/food.component';
 import { EventComponent } from './event/event.component';
+import { BasicInfoComponent } from './movie/basic-info/basic-info.component';
+import { PlayVideoComponent } from './movie/play-video/play-video.component';
 
 
 
@@ -37,11 +39,14 @@ export const routes: Route[] = [
 @NgModule({
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     SharedMaterialModule,
     NgQRCodeReaderModule,
     RouterModule.forChild(routes)
 
   ],
-  declarations: [CheckInComponent, HomeComponent, OutletComponent, MovieComponent, FoodComponent, EventComponent]
+  entryComponents: [PlayVideoComponent],
+  declarations: [CheckInComponent, HomeComponent, OutletComponent,
+    MovieComponent, FoodComponent, EventComponent, BasicInfoComponent, PlayVideoComponent]
 })
 export class InStayModule { }

@@ -10,13 +10,13 @@ import { environment } from '../../../environments/environment';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { MovieService } from './movie.service';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser/src/browser';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
+
     HttpClientModule,
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
