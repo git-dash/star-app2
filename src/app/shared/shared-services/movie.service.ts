@@ -158,12 +158,13 @@ export class MovieService {
           spoken_languages: data.spoken_languages.map(lan => lan.name),
           revenue: data.revenue,
           tagline: data.tagline,
+          cost: Math.random(),
           videos: data.videos.results.map(vid => {
             return {
               type: vid.type,
               size: vid.size,
               name: vid.name,
-              key: vid.key,
+              key: environment.movie.videoURL + vid.key,
             };
 
           }),

@@ -7,10 +7,12 @@
   <mat-card-content>
     <div class="row">
 
-      <div class="container col-lg-12">
+      <div class="container col-lg-12" *ngIf="sample$ |async as detail;">
 
         <div class="col-lg-2">
-          <img [src]="shortMovie.poster_path" alt="" class="" class="img-responsive" style="width:150px">
+          <img [src]="shortMovie.poster_path" alt="" class="" class="img-responsive" style="width:150px" />
+          <button mat-raised-button color='warn' (click)="openVideoModal(shortMovie.id,shortMovie.title,shortMovie.release_date,detail.videos)"> Watch Movie @ {{ 2+2 | currency :'INR' }} </button>
+          <button mat-raised-button color='accent' > Watch Movie @ {{ 2+2 | currency :'INR' }} </button>
         </div>
         <div class="col-lg-10 text-left">
           <!-- {{shortMovie | json}} -->
@@ -22,7 +24,7 @@
             <button (click)='getMovieDetails(shortMovie.id)'> View Details </button>
           </p>
 
-          <div *ngIf="sample$ |async as detail;">
+          <div>
             <!-- {{detail | json}} -->
             <p> Duration : {{detail.runtime}} </p>
             <p> Average : {{detail.vote_average}} </p>

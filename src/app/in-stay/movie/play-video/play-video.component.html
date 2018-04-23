@@ -1,3 +1,25 @@
-<p>
-  play-video works!
-</p>
+<h1 mat-dialog-title>
+  <mat-label>
+    Movie : {{data.title }} [ {{ data.releaseData}}]]
+  </mat-label>
+</h1>
+
+<div class="">
+  <!-- {{data.title}} {{data.videos | json}} -->
+
+  <ol>
+    <li *ngFor="let video of data.videos; let i=index">
+      {{video.type + '-' + video.name}}
+      {{video.key}}
+    </li>
+  </ol>
+
+  <!-- // "//www.youtube.com/embed/YE7VzlLtp-4"  -->
+  {{videoSource}}
+  <!-- <iframe width="560" height="315" src='//www.youtube.com/embed/YE7VzlLtp-4' frameborder="0" allowfullscreen></iframe> -->
+  <iframe width="560" height="315" src='{{videoSource}}' frameborder="0" allowfullscreen></iframe>
+
+
+
+
+</div>
