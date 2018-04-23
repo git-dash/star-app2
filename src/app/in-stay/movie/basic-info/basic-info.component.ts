@@ -32,6 +32,7 @@ export class BasicInfoComponent implements OnInit {
 
   getMovieDetails(movieId) {
 
+    
     // console.log(this.movieService.getMovieDetails(movieId));
     this.sample$ =
       this.movieService.getMovieDetails(movieId)

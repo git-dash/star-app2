@@ -39,7 +39,6 @@ export class MovieComponent implements OnInit {
   ngOnInit() {
 
     this.searchField = new FormControl();
-    // this.getNewList(true);
 
 
 

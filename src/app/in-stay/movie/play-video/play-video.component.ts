@@ -18,8 +18,10 @@ export class PlayVideoComponent {
     // year = data.rel
     this.videoSource =
       "//www.youtube.com/embed/YE7VzlLtp-4";
+      
     //  data.videos[0].key;
 
+    
   }
   playVideo(key) {
     this.videoSource = key;

@@ -150,7 +150,6 @@ export class MovieService {
       .get(requestURL)
       .map((data: any) => {
         console.log(data);
-
         const test = {
           id: movieId,
           runtime: data.runtime,

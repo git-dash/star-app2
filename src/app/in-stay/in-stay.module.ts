@@ -25,7 +25,7 @@ export const routes: Route[] = [
   },
   {
     path: 'login', component: CheckInComponent
-    // , outlet: 'login'
+    
   },
   {
     path: 'home', component: HomeComponent
@@ -43,7 +43,6 @@ export const routes: Route[] = [
     SharedMaterialModule,
     NgQRCodeReaderModule,
     RouterModule.forChild(routes)
-
   ],
   entryComponents: [PlayVideoComponent],
   declarations: [CheckInComponent, HomeComponent, OutletComponent,
