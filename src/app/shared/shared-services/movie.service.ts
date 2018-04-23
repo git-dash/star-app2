@@ -177,18 +177,22 @@ export class MovieService {
                   ? environment.movie.imageURL + cast.profile_path : '',
               };
 
-            }).slice(1, 5),
+            })
+              .slice(1, 6),
           crew:
-            data.credits.crew.map((cast, index) => {
-              return {
-                order: index,
-                character: cast.job,
-                name: cast.name,
-                profile_path: cast.profile_path !== null
-                  ? environment.movie.imageURL + cast.profile_path : '',
-              };
+            data.credits.crew
+              .filter(crew => crew.profile_path != null)
+              .map((cast, index) => {
+                return {
+                  order: index,
+                  character: cast.job,
+                  name: cast.name,
+                  profile_path: cast.profile_path !== null
+                    ? environment.movie.imageURL + cast.profile_path : '',
+                };
 
-            }).slice(1, 5),
+              })
+              .slice(1, 6),
         };
         return test;
       })
