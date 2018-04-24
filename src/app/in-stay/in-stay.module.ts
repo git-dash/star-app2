@@ -15,6 +15,7 @@ import { FoodComponent } from './food/food.component';
 import { EventComponent } from './event/event.component';
 import { BasicInfoComponent } from './movie/basic-info/basic-info.component';
 import { PlayVideoComponent } from './movie/play-video/play-video.component';
+import { SafeVideoPipe } from '../shared/filters/safe-video.pipe';
 
 
 
@@ -25,7 +26,7 @@ export const routes: Route[] = [
   },
   {
     path: 'login', component: CheckInComponent
-    
+
   },
   {
     path: 'home', component: HomeComponent
@@ -46,6 +47,6 @@ export const routes: Route[] = [
   ],
   entryComponents: [PlayVideoComponent],
   declarations: [CheckInComponent, HomeComponent, OutletComponent,
-    MovieComponent, FoodComponent, EventComponent, BasicInfoComponent, PlayVideoComponent]
+    MovieComponent, FoodComponent, EventComponent, BasicInfoComponent, PlayVideoComponent, SafeVideoPipe]
 })
 export class InStayModule { }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedMaterialModule } from './shared/shared-material/shared-material.module';
 import { SharedServicesModule } from './shared/shared-services/shared-services.module';
 
+
 export const routes: Route[] = [
   {
     path: '', redirectTo: 'check-in', pathMatch: 'full'
@@ -20,7 +21,8 @@ export const routes: Route[] = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
