@@ -157,7 +157,7 @@ export class MovieService {
           spoken_languages: data.spoken_languages.map(lan => lan.name),
           revenue: data.revenue,
           tagline: data.tagline,
-          cost: Math.random(),
+          cost: Math.floor(Math.random() * 500),
           videos: data.videos.results.map(vid => {
             return {
               type: vid.type,

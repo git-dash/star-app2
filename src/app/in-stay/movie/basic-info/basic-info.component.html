@@ -11,10 +11,23 @@
 
         <div class="col-lg-2">
           <img [src]="shortMovie.poster_path" alt="" class="" class="img-responsive" style="width:150px" />
-          <button mat-raised-button color='warn' (click)="openVideoModal(shortMovie.id,shortMovie.title,shortMovie.release_date,detail.videos)"> Watch Movie @ {{ 2+2 | currency :'INR' }} </button>
-          <button mat-raised-button color='accent' > Watch Movie @ {{ 2+2 | currency :'INR' }} </button>
+
+          <span [ngSwitch]="isMovieWatched(shortMovie.id)">
+            <p *ngSwitchCase="true">
+
+              <button mat-raised-button color='warn' *ngIf="isMovieWatched(shortMovie.id)" (click)=" confirmViewOption(shortMovie.id,shortMovie.title,shortMovie.release_date,detail.videos,detail.cost) ">
+                Watch Movie @ {{ detail.runtime | currency :'INR' }} </button>
+            </p>
+            <p *ngSwitchCase="false">
+
+              <button mat-raised-button color='accent'> Click To Play @ {{ detail.cost | currency :'INR' }} </button>
+            </p>
+            <p *ngSwitchDefault>
+
+            </p>
+          </span>
         </div>
-        <div class="col-lg-10 text-left">
+        <div class="col-lg-10 text-left ">
           <!-- {{shortMovie | json}} -->
           <p> Title : {{ shortMovie.title}} </p>
           <p> Release Date : {{ shortMovie.release_date | date:'fullDate'}} </p>
@@ -32,16 +45,16 @@
             <p> Languages : {{detail.spoken_languages}}</p>
             <p> Cast Details: </p>
 
-            <div class="holder">
-              <mat-card *ngFor="let cast of detail.cast;">
-                <img mat-card-image [src]='cast.profile_path' class="profile-photo" />
+            <div class="holder ">
+              <mat-card *ngFor="let cast of detail.cast; ">
+                <img mat-card-image [src]='cast.profile_path' class="profile-photo " />
                 <mat-card-content>
-                  <div class="row">
+                  <div class="row ">
 
 
                     {{cast.name}}
                     <br>
-                    <span class="text-center"> AS</span>
+                    <span class="text-center "> AS</span>
                     <br> {{cast.character}}
 
                   </div>
@@ -49,16 +62,16 @@
               </mat-card>
             </div>
             <p>Direction & Crew Details. </p>
-            <div class="holder">
-              <mat-card *ngFor="let cast of detail.crew;">
-                <img mat-card-image [src]='cast.profile_path' class="profile-photo" />
+            <div class="holder ">
+              <mat-card *ngFor="let cast of detail.crew; ">
+                <img mat-card-image [src]='cast.profile_path' class="profile-photo " />
                 <mat-card-content>
-                  <div class="row">
+                  <div class="row ">
 
 
                     {{cast.name}}
                     <br>
-                    <span class="text-center"> AS</span>
+                    <span class="text-center "> AS</span>
                     <br> {{cast.character}}
 
                   </div>

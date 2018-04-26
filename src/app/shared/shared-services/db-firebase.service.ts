@@ -13,6 +13,34 @@ export class DbFirebaseService {
 
   constructor(private _dbService: AngularFireDatabase, private _sessionStore: LocalStorageService) { }
 
+
+
+  // --------------------------------------- App2 Method ---------------------------------------
+
+  addServiceIntoBillingModal(id, type, name, cost) {
+
+    const bookingId = this.getStoreData('roomKey');
+    const bookingDetailsPath = `bookingDetails/${bookingId}/usedServices/`;
+    const purchageDate = new Date();
+
+    return this._dbService.database.ref(bookingDetailsPath)
+      .push(
+      {
+        id: id,
+        type: type,
+        name: name,
+        cost: cost,
+        date: purchageDate
+      });
+
+  }
+
+
+  // --------------------------------------- App2 Method ---------------------------------------
+
+
+
+
   getHotelList(searchDetail: any) {
 
     // this._dbService.list('bookingDetails').valueChanges().subscribe(data => {
@@ -94,37 +122,12 @@ export class DbFirebaseService {
     return this._dbService.object('hotel').valueChanges();
     // .map(response => response.);
   }
-  // getUserRoomHistory(userId) {
-  //   return this._dbService.list('bookingDetails'
-  //     , ref => ref.orderByChild('userId').equalTo('1')
-  //   ).valueChanges();
-  // }
-
-  // method like adapter
-  // getDbData(dbName, orderByChild, value: string) {
-  //   return this._dbService.list(dbName),
-  //     ref => ref.orderByChild(orderByChild).equalTo(value)
-  //       .valueChanges();
-  // }
 
   getDbData(dbName, orderByChild, value: string) {
     return this._dbService.list(dbName
       , ref => ref.orderByChild(orderByChild).equalTo(value)
     ).valueChanges()
-      // .subscribe(data => {
-      //   const bookingdetails = data;
-      //   let hotelIds = [], roomIds = [];
-      //   bookingdetails.forEach((element: any) => {
-      //     if (hotelIds.findIndex(element.hotelId) === -1) {
-      //       hotelIds.push(element.hotelId);
-      //     }
-      //     if (roomIds.findIndex(element.roomId) === -1) {
-      //       roomIds.push(element.roomId);
-      //     }
-      //   });
-      //   this._dbService.list('hotel').valueChanges().subscribe(response => {
-      //   });
-      // });
+
       ;
   }
 }

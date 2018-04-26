@@ -40,6 +40,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarouselModule } from 'ngx-bootstrap';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -75,8 +76,10 @@ import { BookingModalComponent } from './booking-modal/booking-modal.component';
     MatProgressSpinnerModule
 
   ],
-  entryComponents: [BookingModalComponent],
-  declarations: [StarComponent, GuestListComponent, BillingListComponent, BookingListComponent, BookingModalComponent]
+  entryComponents: [BookingModalComponent, ConfirmModalComponent],
+  declarations: [StarComponent, GuestListComponent, BillingListComponent,
+    BookingListComponent, BookingModalComponent,
+    ConfirmModalComponent, ConfirmModalComponent]
   , exports: [
     MatInputModule,
     MatFormFieldModule,
@@ -112,7 +115,7 @@ import { BookingModalComponent } from './booking-modal/booking-modal.component';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    BookingListComponent, BookingModalComponent,
+    BookingListComponent, BookingModalComponent, ConfirmModalComponent,
     CommonModule
   ]
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckInService } from '../../shared/shared-services/check-in.service';
 import { Router } from '@angular/router';
+import { DbFirebaseService } from '../../shared/shared-services/db-firebase.service';
 
 @Component({
   selector: 'app-check-in',
@@ -17,7 +18,7 @@ export class CheckInComponent implements OnInit {
   data: any = {
   };
   isKeyValid: boolean = null;
-  constructor(private checkInService: CheckInService, private router: Router) { }
+  constructor(private checkInService: CheckInService, private router: Router, private dbService: DbFirebaseService) { }
 
 
   ngOnInit() {
@@ -72,6 +73,15 @@ export class CheckInComponent implements OnInit {
 
         if (response.length !== 0) {
           this.isKeyValid = true;
+
+          // save key data into session
+          //getting movie list
+          this.dbService.setStoreData('roomKey', roomKey);
+
+          const movieList: Array<any> = response[0]['usedServices'];
+          const a = movieList.map(mov => mov.type === 'movie');
+          // this.purchasedMovies = this.dbService.getStoreData('purchasedMovies');
+
           this.router.navigate(['/check-in/home']);
         }
       });
