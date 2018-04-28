@@ -31,11 +31,6 @@ export const routes: Route[] = [
   {
     path: 'home', component: HomeComponent
   },
-  {
-    path: 'home', component: HomeComponent
-  },
-
-
 ];
 @NgModule({
   imports: [

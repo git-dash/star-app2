@@ -17,12 +17,12 @@ export class BasicInfoComponent implements OnInit {
   @Input() shortMovie: any;
 
   sample$: any;
-  purchasedMovies: Array<number> = null;
+  purchasedMovies: number[] = [];
   constructor(private movieService: MovieService, private dialog: MatDialog, private dbService: DbFirebaseService) { }
   ngOnInit(): void {
     //  throw new Error("Method not implemented.");
     console.log('came in basic info card');
-    this.purchasedMovies = this.dbService.getStoreData('purchasedMovies');
+    this.purchasedMovies = this.dbService.getStoreData('purchasedMovies') || [];
     this.sample$ =
       this.movieService.getMovieDetails(this.shortMovie.id)
         .do(data => {
@@ -64,6 +64,7 @@ export class BasicInfoComponent implements OnInit {
 
             this.purchasedMovies.push(id);
             this.dbService.setStoreData('purchasedMovies', this.purchasedMovies);
+            this.openVideoModal(id, title, releaseDate, videoList);
           });
       }
       else {
@@ -91,8 +92,9 @@ export class BasicInfoComponent implements OnInit {
 
 
     let dialogRef = this.dialog.open(PlayVideoComponent, {
-      // width: '100%',
-      height: '250px',
+      // width: '100%',       height: '250px',
+      // 'width': '100%'
+      height: '75%',
       data: { title: title, videos: vid, releaseDate: releaseDate.split('-')[0] }
     });
 

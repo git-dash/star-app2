@@ -9,6 +9,7 @@ import { DbFirebaseService } from '../../shared/shared-services/db-firebase.serv
   styleUrls: ['./check-in.component.css']
 })
 export class CheckInComponent implements OnInit {
+  
   inputMode = 'textMode';
 
   dataurl = null;
@@ -77,9 +78,23 @@ export class CheckInComponent implements OnInit {
           // save key data into session
           //getting movie list
           this.dbService.setStoreData('roomKey', roomKey);
+          const checkInData = response[0];
 
-          const movieList: Array<any> = response[0]['usedServices'];
-          const a = movieList.map(mov => mov.type === 'movie');
+          const movieList = Object.values(checkInData['usedServices'])
+            .filter(x => x.type === 'movie')
+            .map(x => x.id);
+
+
+
+          const eventList = Object.values(checkInData['usedServices'])
+            .filter(x => x.type === 'event')
+            .map(x => x.id);
+          this.dbService.setStoreData('purchasedMovies', movieList);
+
+          // this.dbService.setStoreData('purchasedEvents', eventList);
+
+          // a= Object.values(resp[0].usedServices)
+
           // this.purchasedMovies = this.dbService.getStoreData('purchasedMovies');
 
           this.router.navigate(['/check-in/home']);

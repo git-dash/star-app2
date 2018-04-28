@@ -82,11 +82,12 @@ export class DbFirebaseService {
   }
   resetStoreData(isLogout) {
     // sessionStorage.clear();
-    const usr = this._sessionStore.retrieve('currentUser');
+    // const usr = this._sessionStore.retrieve('currentUser');
+    // this._sessionStore.clear();
+    // if (!isLogout) {
+    //   this._sessionStore.store('currentUser', usr);
+    // }
     this._sessionStore.clear();
-    if (!isLogout) {
-      this._sessionStore.store('currentUser', usr);
-    }
 
   }
 

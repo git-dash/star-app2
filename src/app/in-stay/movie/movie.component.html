@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   movie works!
-</p>
+</p> -->
 <div class="container-fluid" style="padding-bottom: 20px">
 
   <div class="col-lg-9">
@@ -32,7 +32,7 @@
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Available Movie List </mat-header-cell>
           <mat-cell *matCellDef="let row;let index=index">
-            {{index}} {{row.title}}
+            <!-- {{index}} {{row.title}} -->
             <app-basic-info [shortMovie]='row'>
 
             </app-basic-info>
@@ -44,7 +44,7 @@
         </mat-row>
       </mat-table>
 
-      <mat-paginator #currentPaginator [pageSizeOptions]="[1,5,10,20]"></mat-paginator>
+      <mat-paginator #currentPaginator [pageSizeOptions]="[5,10,20]"></mat-paginator>
     </div>
   </div>
 </div>

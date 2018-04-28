@@ -1,8 +1,3 @@
-<p>
-  basic-info works!
-</p>
-
-
 <mat-card>
   <mat-card-content>
     <div class="row">
@@ -12,15 +7,19 @@
         <div class="col-lg-2">
           <img [src]="shortMovie.poster_path" alt="" class="" class="img-responsive" style="width:150px" />
 
+          <!-- {{purchasedMovies }}
+          {{isMovieWatched(shortMovie.id)}} -->
           <span [ngSwitch]="isMovieWatched(shortMovie.id)">
-            <p *ngSwitchCase="true">
-
-              <button mat-raised-button color='warn' *ngIf="isMovieWatched(shortMovie.id)" (click)=" confirmViewOption(shortMovie.id,shortMovie.title,shortMovie.release_date,detail.videos,detail.cost) ">
-                Watch Movie @ {{ detail.runtime | currency :'INR' }} </button>
-            </p>
             <p *ngSwitchCase="false">
 
-              <button mat-raised-button color='accent'> Click To Play @ {{ detail.cost | currency :'INR' }} </button>
+              <button mat-raised-button color='warn' (click)="confirmViewOption(shortMovie.id,shortMovie.title,shortMovie.release_date,detail.videos,detail.cost) ">
+                Watch Movie @ {{ detail.runtime | currency :'INR' }} </button>
+            </p>
+            <p *ngSwitchCase="true">
+
+
+              <button mat-raised-button color='accent' (click)='openVideoModal(shortMovie.id, shortMovie.title, shortMovie.release_date, detail.videos)'>
+              Click Here Play </button>
             </p>
             <p *ngSwitchDefault>
 
