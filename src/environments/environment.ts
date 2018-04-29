@@ -4,19 +4,19 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const movieLinks = {
-  api_key: '-'
+  api_key: 'b12176cbe4608313502b204789b0dbb8'
 };
 export const environment = {
   production: false,
   roomDefaultLocation: 'assets/images/hotel/',
   confRoomDefaultLocation: 'assets/images/hotels/',
   firebaseConfig: {
-    apiKey: '-',
-    authDomain: '-',
-    databaseURL: '-',
-    projectId: '-',
-    storageBucket: '-',
-    messagingSenderId: '-'
+    apiKey: 'AIzaSyB-fYlDGvFYdsJb0Li81AW1Ga1gi2Vfksc',
+    authDomain: 'test-12375.firebaseapp.com',
+    databaseURL: 'https://test-12375.firebaseio.com',
+    projectId: 'test-12375',
+    storageBucket: 'test-12375.appspot.com',
+    messagingSenderId: '926446553362'
   },
   appBillingListTableColumns: [
     'id',
@@ -97,7 +97,10 @@ export const environment = {
     // genreListURL: `https://api.themoviedb.org/3/genre/movie/list?api_key=${movieLinks.api_key}`
     // test url     // 'https://api.themoviedb.org/3/genre/movie/list?api_key=b12176cbe4608313502b204789b0dbb8',
 
-    imageURL: '-',
+    imageURL: 'https://image.tmdb.org/t/p/w500',
+    videoURL:
+      // `https://www.youtube.com/watch?v=`,
+      `//www.youtube.com/embed/`,
     genreList:
       [{
         'id': 28,
@@ -157,7 +160,36 @@ export const environment = {
         'id': 37,
         'name': 'Western'
       }]
-  }
+  },
+
+  eventList: [
+
+    {
+      'imageURL': 'http://www.thaiembassy.com/wp-content/uploads/2015/04/thailand-sky-lanterns.jpg',
+      'desc': 'Festival Event', 'id': 1
+    },
+    {
+      'imageURL': 'http://s3.india.com/wp-content/uploads/2017/08/events-in-sep-india.jpg',
+      'desc': 'Music Festival', 'id': 2
+    },
+    {
+      'imageURL': 'https://www.couponraja.in/theroyale/wp-content/uploads/2017/06/5-Popular-Events-in-India-631x480.jpg',
+      'desc': 'Rise Latern Festival' , 'id': 3
+    }, {
+      'imageURL': 'http://images.indianexpress.com/2015/09/yoga.jpg',
+      'desc': 'Yoga Event' , 'id': 4
+    }, {
+      'imageURL': 'https://eventstreet.in/wp-content/uploads/2018/01/34-1-1024x418.jpg',
+      'desc': 'The RRRun - Marathon ' , 'id': 5
+    },
+    {
+      'imageURL': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL1DKEf7rrA0w3_YYof_0l0Sf3-I0G3QSDWRTF5AscOCX2vfNeig',
+      'desc': 'ToastMasters International' , 'id': 6
+    }
+
+  ]
+
+
 };
 
 

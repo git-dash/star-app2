@@ -37,11 +37,7 @@ export class MovieService {
       .get<any>(requestURL)
       .delay(1000)
       .map(data => {
-        // data.results[0].genre_ids.map(y => {
-        //   console.log(environment.movie.genreList.find(gen => gen.id === y).name);
-        //   return environment.movie.genreList.find(gen => gen.id === y).name;
-        //   environment.movie.genreList.find(x => x.id == y).name
-        // });
+
 
         console.log('came from observabledatasource map ' + data);
 

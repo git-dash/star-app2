@@ -9,9 +9,9 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this._dbService.getStoreData('currentUser') || null;
+    const roomKey = this._dbService.getStoreData('roomKey') || null;
     // JSON.parse(sessionStorage.getItem('currentUser'));
-    if (currentUser) {
+    if (roomKey) {
       //  && JSON.parse(currentUser).type === 'admin') {
       // logged in so return true
       return true;
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     // not logged in so redirect to login page with the return url
 
 
-    this._router.navigate(['identity/login'], { queryParams: { returnUrl: state.url } });
+    this._router.navigate([''], { queryParams: { returnUrl: state.url } });
     return false;
 
 

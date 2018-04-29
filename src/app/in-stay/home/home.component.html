@@ -4,7 +4,14 @@
 </p>
 
 
-<mat-tab-group selectedIndex='1'>
+<mat-tab-group selectedIndex='0'>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      CheckIn Details
+    </ng-template>
+    <app-outlet></app-outlet>
+
+  </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
       Movies
@@ -29,13 +36,4 @@
   </mat-tab>
 </mat-tab-group>
 
-
-<mat-tab-group>
-  <mat-tab>
-    <ng-template mat-tab-label> testing food </ng-template>
-    hi
-
-  </mat-tab>
-
-</mat-tab-group>
 <br>

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CheckInService } from '../../shared/shared-services/check-in.service';
 import { Router } from '@angular/router';
 import { DbFirebaseService } from '../../shared/shared-services/db-firebase.service';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
   styleUrls: ['./check-in.component.css']
 })
-export class CheckInComponent implements OnInit {
-  
+export class CheckInComponent implements OnInit, OnDestroy {
+  sample$: Subscription;
+
+
   inputMode = 'textMode';
 
   dataurl = null;
@@ -57,48 +61,55 @@ export class CheckInComponent implements OnInit {
   }
 
 
-  // enableCheckIn(): boolean {
-  //   return (this.key == null || this.key == "")
-  //     && (this.scanKey == null || this.scanKey == "") ? true : false;
-  // }
+
   checkRoomKey() {
     // reset validation step
     this.isKeyValid = false;
 
     const roomKey = this.inputMode === 'textMode' ? this.key : this.scanKey;
 
-    this.checkInService
-      .checkRoomKey(roomKey)
-      .subscribe(response => {
-        console.log(response);
+    this.sample$ =
+      this.checkInService
+        .checkRoomKey(roomKey)
+        .subscribe(response => {
+          console.log(response);
 
-        if (response.length !== 0) {
-          this.isKeyValid = true;
+          if (response.length !== 0) {
+            this.isKeyValid = true;
 
-          // save key data into session
-          //getting movie list
-          this.dbService.setStoreData('roomKey', roomKey);
-          const checkInData = response[0];
+            // save key data into session
+            // getting movie list
+            this.dbService.setStoreData('roomKey', roomKey);
+            const checkInData: any = response[0];
 
-          const movieList = Object.values(checkInData['usedServices'])
-            .filter(x => x.type === 'movie')
-            .map(x => x.id);
+            const movieList = Object.values(checkInData['usedServices'])
+              .filter(x => x.type === 'movie')
+              .map(x => x.id);
 
 
 
-          const eventList = Object.values(checkInData['usedServices'])
-            .filter(x => x.type === 'event')
-            .map(x => x.id);
-          this.dbService.setStoreData('purchasedMovies', movieList);
+            const eventList = Object.values(checkInData['usedServices'])
+              .filter(x => x.type === 'event')
+              .map(x => x.id);
+            this.dbService.setStoreData('purchasedMovies', movieList);
 
-          // this.dbService.setStoreData('purchasedEvents', eventList);
 
-          // a= Object.values(resp[0].usedServices)
+            // this.dbService.setStoreData('purchasedEvents', eventList);
 
-          // this.purchasedMovies = this.dbService.getStoreData('purchasedMovies');
+            // a= Object.values(resp[0].usedServices)
 
-          this.router.navigate(['/check-in/home']);
-        }
-      });
+            // this.purchasedMovies = this.dbService.getStoreData('purchasedMovies');
+
+            this.checkInService.checkInRequest(checkInData.roomKey, 0);
+            this.router.navigate(['/check-in/home']);
+          } else {
+            window.alert('Invalid Key or QR Code');
+          }
+        });
+  }
+
+
+  ngOnDestroy(): void {
+    this.sample$.unsubscribe();
   }
 }

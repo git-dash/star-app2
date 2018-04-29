@@ -16,6 +16,8 @@ import { EventComponent } from './event/event.component';
 import { BasicInfoComponent } from './movie/basic-info/basic-info.component';
 import { PlayVideoComponent } from './movie/play-video/play-video.component';
 import { SafeVideoPipe } from '../shared/filters/safe-video.pipe';
+import { FeedbackComponent } from './outlet/feedback/feedback.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 
 
@@ -25,11 +27,11 @@ export const routes: Route[] = [
     redirectTo: 'login'
   },
   {
-    path: 'login', component: CheckInComponent
+    path: 'login', component: CheckInComponent, canActivate: [AuthGuard]
 
   },
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard]
   },
 ];
 @NgModule({
@@ -40,8 +42,10 @@ export const routes: Route[] = [
     NgQRCodeReaderModule,
     RouterModule.forChild(routes)
   ],
-  entryComponents: [PlayVideoComponent],
+  entryComponents: [PlayVideoComponent, FeedbackComponent],
   declarations: [CheckInComponent, HomeComponent, OutletComponent,
-    MovieComponent, FoodComponent, EventComponent, BasicInfoComponent, PlayVideoComponent, SafeVideoPipe]
+    MovieComponent, FoodComponent, EventComponent, BasicInfoComponent, PlayVideoComponent, SafeVideoPipe
+    , FeedbackComponent]
+  , providers: [AuthGuard]
 })
 export class InStayModule { }

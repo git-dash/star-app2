@@ -22,7 +22,7 @@ export const routes: Route[] = [
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,

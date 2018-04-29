@@ -11,20 +11,20 @@ export class CheckInService {
   /*
     getAllBookings(dbName) {
       return this._dbService.list(dbName
-       
+
       ).valueChanges();
     }
     checkInRequest(bookingId: string, index: number) {
-  
+
       const attributeList = ['isCheckIn', 'isCheckOut', 'approval'];
       const id = `bookingDetails/${bookingId}/checkingDetails`;
-    
+
       const attribute = {
-  
+
         [attributeList[index]]: true
       };
-  
-  
+
+
       const st = this._dbService.database.ref(id)
         .update(attribute)
         .then(response => {
@@ -33,9 +33,9 @@ export class CheckInService {
         .catch(error => {
           console.log(error);
         });
-  
+
       return st;
-  
+
     }
     */
   successfulCheckout(bookingId, roomId, available, total, feedbackMessage, feedbackRating) {
@@ -101,13 +101,13 @@ export class CheckInService {
 
     console.log('came here', roomKey);
 
-    this._dbService.list('bookingDetails')
-      .valueChanges().subscribe(
-        resp => {
-          console.log(resp);
+    // this._dbService.list('bookingDetails')
+    //   .valueChanges().subscribe(
+    //   resp => {
+    //     console.log(resp);
 
-        }
-      )
+    //   }
+    //   );
     return this._dbService
       .list('bookingDetails', ref => ref.orderByChild('roomKey').equalTo(roomKey))
       .valueChanges();
@@ -115,4 +115,38 @@ export class CheckInService {
     // return false;
   }
 
+
+  checkInRequest(bookingId: string, index: number) {
+
+    const attributeList = ['isCheckIn', 'isCheckOut'];
+    const id = `bookingDetails/${bookingId}/checkingDetails`;
+    // return this._dbService.database.ref().child(id)
+    // . app.database().ref().child database().ref() list('bookingDetails').
+    const attribute = {
+
+      [attributeList[index]]: true
+    };
+
+    // const val2 = { val: true };
+
+    const st = this._dbService.database.ref(id)
+      .update(attribute)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    // .subscribe(response => {
+    //   console.log(response);
+
+    // });
+
+    return st;
+    // .set(, {
+    //   'isCheckIn': true
+    // });
+    // return;
+  }
 }

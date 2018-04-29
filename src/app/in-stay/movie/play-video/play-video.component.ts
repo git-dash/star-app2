@@ -17,7 +17,7 @@ export class PlayVideoComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     // year = data.rel
     this.videoSource =
-      "//www.youtube.com/embed/YE7VzlLtp-4";
+      '//www.youtube.com/embed/YE7VzlLtp-4';
 
     //  data.videos[0].key;
 

@@ -46,17 +46,19 @@ export class BasicInfoComponent implements OnInit {
   }
   confirmViewOption(id, title, releaseDate, videoList, cost) {
 
-    let dialogRef = this.dialog.open(
+    const dialogRef = this.dialog.open(
       ConfirmModalComponent,
       {
         height: '250px',
-        data: { title: 'Movie ', confirmMessage: `Do you want to Watch Movie @ ${id} `, from: 'MovieComponent' }
+        data: {
+          title: 'Movie ', confirmMessage: `Do you want to Watch Movie:`, from: 'MovieComponent',
+          cost: cost
+        }
       }
     );
     dialogRef.afterClosed().subscribe(result => {
 
-      if (result == true) {
-        // this.openVideoModal()
+      if (result === true) {
         console.log('The dialog was closed' + result);
         this.dbService.addServiceIntoBillingModal(id, 'movie', title, cost)
           .then(response => {
@@ -66,15 +68,14 @@ export class BasicInfoComponent implements OnInit {
             this.dbService.setStoreData('purchasedMovies', this.purchasedMovies);
             this.openVideoModal(id, title, releaseDate, videoList);
           });
-      }
-      else {
+      } else {
         console.log('The dialog was closed');
 
       }
     });
   }
   isMovieWatched(movieId) {
-    return this.purchasedMovies.findIndex(mov => mov == movieId) > -1
+    return this.purchasedMovies.findIndex(mov => mov === movieId) > -1
       ? true : false;
   }
   openVideoModal(id, title, releaseDate, videoList) {
@@ -91,10 +92,10 @@ export class BasicInfoComponent implements OnInit {
       });
 
 
-    let dialogRef = this.dialog.open(PlayVideoComponent, {
+    const dialogRef = this.dialog.open(PlayVideoComponent, {
       // width: '100%',       height: '250px',
-      // 'width': '100%'
-      height: '75%',
+      width: '81%',
+      height: '77%',
       data: { title: title, videos: vid, releaseDate: releaseDate.split('-')[0] }
     });
 
