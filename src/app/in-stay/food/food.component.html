@@ -1,11 +1,39 @@
-<p>
-  food works!
-</p>
-
 <h3>
-  Room Details
+  Available Foods & Beverages
 </h3>
 
-<div class="container">
+<div>
+  <button mat-raised-button *ngFor="let option of foodOptions" [color]='option.color' style="margin:0px 10px;" (click)='selectRegion=food[option.select]'>
+    {{option.title}}
+  </button>
+</div>
+<div class="text-center my-container container-fluid" style="width:1200px; flex-flow: row wrap" fxLayout="row" fxLayoutAlign="space-around center"
+  fxLayoutGap="2%">
+
+
+  <div fxFlex="20%" *ngFor="let event of selectRegion; let i=index">
+    <mat-card>
+      <mat-card-header>
+        {{event.name}}
+
+      </mat-card-header>
+      <img mat-card-image [src]='"assets/food/" + event.image' style="height:120px;" />
+      <mat-card-content>
+        <div class="row ">
+          {{event.description}}
+          <br>
+          <p>
+            <mat-icon class="md-icon dp48" [style.color]="event.type=='Non-Vegetarian' ? 'red' : 'green'">
+              <!-- [style.border]="event.type=='Non-Vegetarian' ? '2px solid red' : '2px solid green'" -->
+              fiber_manual_record </mat-icon>
+            <button mat-raised-button color='warn' (click)='confirmViewOption(event.id,event.name,event.type,event.cost)'>
+              Buy Food @ {{event.cost |currency:'INR'}}
+            </button>
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
 
 </div>

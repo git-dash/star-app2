@@ -16,6 +16,7 @@
       <span class="example-icon">
         <button mat-raised-button color='warn' (click)='checkingStatus(true)' [disabled]='!book.checkingDetails.approval'>
           Pay {{book.total | currency:'INR'}} & Check Out </button>
+        <button mat-raised-button color='accent' (click)='logout()'> Logout </button>
       </span>
     </mat-toolbar-row>
   </mat-toolbar>

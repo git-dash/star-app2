@@ -13,8 +13,5 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout(): void {
-
-    this.dbService.resetStoreData(false);
-  }
+  
 }

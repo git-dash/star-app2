@@ -21,7 +21,7 @@ export class DbFirebaseService {
 
     const bookingId = this.getStoreData('roomKey');
     const bookingDetailsPath = `bookingDetails/${bookingId}/usedServices/`;
-    const purchageDate = new Date().getUTCDate();
+    const purchageDate = new Date().toLocaleDateString();
 
     return this._dbService.database.ref(bookingDetailsPath)
       .push(

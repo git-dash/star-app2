@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ConfirmModalComponent } from '../../shared/shared-material/confirm-modal/confirm-modal.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-outlet',
@@ -18,7 +19,7 @@ export class OutletComponent implements OnInit, OnDestroy {
 
 
   constructor(private dbService: DbFirebaseService, private checkInService: CheckInService
-    , private dialog: MatDialog) { }
+    , private dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
 
@@ -120,5 +121,10 @@ export class OutletComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sample$.unsubscribe();
+  }
+
+  logout(): void {
+    this.dbService.resetStoreData(false);
+    this.router.navigate(['']);
   }
 }
