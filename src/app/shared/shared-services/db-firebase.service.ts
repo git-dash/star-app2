@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+
 import { LocalStorageService } from 'ngx-webstorage';
 import querybase from 'querybase';
-import { promise } from 'selenium-webdriver';
+
+
 @Injectable()
 export class DbFirebaseService {
 
@@ -34,7 +36,6 @@ export class DbFirebaseService {
       });
 
   }
-
 
 
 
