@@ -32,6 +32,24 @@ export const routes: Route[] = [
   },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard]
+    , children: [
+      {
+        path: '', redirectTo: 'outlet'
+      },
+      {
+        path: 'outlet', component: OutletComponent
+      },
+      {
+        path: 'movies', component: MovieComponent
+      },
+      {
+        path: 'event', component: EventComponent
+      },
+      {
+        path: 'food', component: FoodComponent
+      },
+
+    ]
   },
 ];
 @NgModule({

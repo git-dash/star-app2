@@ -6,9 +6,9 @@
 
         <div class="col-lg-2">
           <img [src]="shortMovie.poster_path" alt="" class="" class="img-responsive" style="width:150px" />
-
-          <!-- {{purchasedMovies }}
-          {{isMovieWatched(shortMovie.id)}} -->
+          <mat-divider style="width:78%; border-color : #ff4081;margin:10px;"> </mat-divider>
+          <br>
+          
           <span [ngSwitch]="isMovieWatched(shortMovie.id)">
             <p *ngSwitchCase="false">
 

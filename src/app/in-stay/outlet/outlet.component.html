@@ -1,11 +1,5 @@
-<p> outlet works!</p>
-
 <div class="container">
-
-
-
 </div>
-
 
 <div class="container-fluid text-left" *ngIf="data as book;">
 
@@ -16,7 +10,7 @@
       <span class="example-icon">
         <button mat-raised-button color='warn' (click)='checkingStatus(true)' [disabled]='!book.checkingDetails.approval'>
           Pay {{book.total | currency:'INR'}} & Check Out </button>
-        <button mat-raised-button color='accent' (click)='logout()'> Logout </button>
+        <!-- <button mat-raised-button color='accent' (click)='logout()'> Logout </button> -->
       </span>
     </mat-toolbar-row>
   </mat-toolbar>

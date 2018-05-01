@@ -1,15 +1,16 @@
 <h3 class="text-center">
   Available Events
 </h3>
-
-<div class="my-container">
+<mat-divider style="border-color : #ff4081;margin:10px;"> </mat-divider>
+<div class="container my-container">
   <div class="card" *ngFor="let event of eventList; let i=index">
 
     <mat-card>
       <img mat-card-image [src]='event.imageURL' />
       <mat-card-content>
         <div class="row ">
-          {{event.desc}} {{purchasedEvents | json}}
+          {{event.desc}} 
+          <!-- {{purchasedEvents | json}} -->
           <br>
           <!-- <span class="text-center "> AS</span> -->
           <br>

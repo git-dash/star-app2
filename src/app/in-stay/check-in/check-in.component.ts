@@ -30,7 +30,7 @@ export class CheckInComponent implements OnInit, OnDestroy {
     // this.data.roomKey
     this.key =
       // '-LACLIdDspNmBgQMRMXH';
-      '-L6_vPTHL5VX7yOjhGPJ';
+      '-LBGPhXEymPPJC8bQdhr';
   }
 
   render(e) {

@@ -873,9 +873,13 @@ export class FoodComponent implements OnInit {
 
 
 
-    this.selectRegion = this.food['north'];
+    this.changeRegion('north');
   }
 
+  changeRegion(region: any) {
+    this.selectRegion = this.food[region];
+    this.selectRegion.sort((first: any, second: any) => { return first.description.length - second.description.length; });
+  }
 
   confirmViewOption(id, name, type, cost) {
 
@@ -894,7 +898,7 @@ export class FoodComponent implements OnInit {
       if (result === true) {
         // this.openVideoModal()
         console.log('The dialog was closed' + result);
-        this.dbService.addServiceIntoBillingModal(id, 'event', name, cost)
+        this.dbService.addServiceIntoBillingModal(id, `'event'`, name, cost)
           .then(response => {
             console.log(response);
 

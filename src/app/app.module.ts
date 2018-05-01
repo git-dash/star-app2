@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SharedMaterialModule } from './shared/shared-material/shared-material.module';
 import { SharedServicesModule } from './shared/shared-services/shared-services.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 export const routes: Route[] = [
@@ -26,6 +28,7 @@ export const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     SharedMaterialModule,
     SharedServicesModule,
